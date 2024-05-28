@@ -23,18 +23,6 @@ const Header: React.FC<HeaderProps> = ({ theme, setTheme }) => {
 
   useEffect(() => {
     gsap.fromTo(headerRef.current, { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 1.5, ease: 'power3.out' });
-
-    // Verificar o tema no localStorage ou definir o tema padrão como 'dark'
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.classList.toggle('light', savedTheme === 'light');
-      document.body.classList.toggle('light', savedTheme === 'light');
-    } else {
-      setTheme('dark');
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('dark');
-    }
   }, []);
 
   const toggleTheme = (newTheme: string) => {
@@ -58,15 +46,10 @@ const Header: React.FC<HeaderProps> = ({ theme, setTheme }) => {
   };
 
   return (
-    <header ref={headerRef} className="fixed top-0 w-full z-50 py-4 px-8">
+    <header ref={headerRef} className={`fixed top-0 w-full z-50 py-4 px-8`}>
       <div className="container mx-auto flex justify-center relative bg-transparent">
-        <div
-          className={`absolute inset-0 rounded-full z-[-1] ${theme === 'light' ? 'bg-white text-black' : 'bg-black text-white'}`}
-          style={{ width: '80%', margin: 'auto' }}
-        ></div>
-        <div
-          className="flex items-center justify-center space-x-4 rounded-full border p-4 md:w-[80%] w-[90%]"
-        >
+        <div className={`absolute inset-0 rounded-full z-[-1] ${theme === 'light' ? 'bg-white text-black' : 'bg-black text-white'}`} style={{ width: '80%', margin: 'auto' }}></div>
+        <div className="flex items-center justify-center space-x-4 rounded-full w-full lg:w-5/6 border p-4">
           <Image src={logo} height={75} width={75} alt='' />
           <div
             onMouseEnter={() => showMenu(setNavMenuVisible, navMenuTimeoutRef)}
