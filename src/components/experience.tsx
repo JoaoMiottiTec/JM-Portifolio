@@ -1,5 +1,4 @@
-
-'use client'
+'use client';
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -11,28 +10,29 @@ const ExperienceSection = () => {
 
   useEffect(() => {
     sectionsRef.current.forEach((section, index) => {
-      gsap.fromTo(section, 
-        { opacity: 0, y: 50 }, 
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 1, 
-          ease: 'power3.out', 
+      gsap.fromTo(
+        section,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: section,
             start: 'top 80%',
             end: 'bottom 60%',
-            toggleActions: 'play none none reverse'
-          }
+            toggleActions: 'play none none reverse',
+          },
         }
       );
     });
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col items-start justify-center py-20 relative">
-      <div className="container mx-auto px-4 section-content">
-        <h2 className="text-7xl font-bold mb-8">Experiências</h2>
+    <section className="min-h-screen flex flex-col items-start justify-center py-20 relative px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto section-content">
+        <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 text-center sm:text-left">Experiências</h2>
         <div ref={(el) => { sectionsRef.current[0] = el! }} className="experience-item mb-8">
           <h3 className="text-2xl font-semibold">Freelancer</h3>
           <p className="text-lg">Agosto 2022 – Atualmente</p>

@@ -1,10 +1,10 @@
 'use client'
 import { useState, useEffect, useRef } from 'react';
-import Image from '../../node_modules/next/image';
+import Image from 'next/image';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { gsap } from 'gsap';
-import logo from '../../public/images/logo.png'
+import logo from '../../public/images/logo.png';
 
 const Header = () => {
   const [theme, setTheme] = useState('dark');
@@ -41,8 +41,9 @@ const Header = () => {
   };
 
   return (
-    <header ref={headerRef} className={`fixed top-0 w-full z-50 py-4 px-8 ${theme === 'light' ? 'bg-white text-black border border-gray-300' : 'bg-black text-white'}`}>
-      <div className="container mx-auto flex justify-center">
+    <header ref={headerRef} className={`fixed top-0 w-full z-50 py-4 px-8`}>
+      <div className="container mx-auto flex justify-center relative bg-transparent">
+        <div className={`absolute inset-0  rounded-full z-[-1]  ${theme === 'light' ? 'bg-white text-black' : 'bg-black text-white'}`} style={{ width: '80%', margin: 'auto' }}></div>
         <div className="flex items-center justify-center space-x-4 rounded-full border p-4" style={{ width: '80%' }}>
           <Image src={logo} height={75} width={75} alt='' />
           <div

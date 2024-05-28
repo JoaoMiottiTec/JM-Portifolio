@@ -1,4 +1,3 @@
-// components/Projects.tsx
 'use client'
 import { useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -34,25 +33,36 @@ const Projects = () => {
   }, []);
 
   const projects = [
-    { src: 'https://via.placeholder.com/600x400', alt: 'Project 1', link: 'https://project1.com' },
-    { src: 'https://via.placeholder.com/600x400', alt: 'Project 2', link: 'https://project2.com' },
-    { src: 'https://via.placeholder.com/600x400', alt: 'Project 3', link: 'https://project3.com' },
-    { src: 'https://via.placeholder.com/600x400', alt: 'Project 4', link: 'https://project4.com' },
-    { src: 'https://via.placeholder.com/600x400', alt: 'Project 5', link: 'https://project5.com' },
-    { src: 'https://via.placeholder.com/600x400', alt: 'Project 6', link: 'https://project6.com' },
+    { src: '/images/curriculo.png', alt: 'Curriculo antigo', link: 'https://joaomiottitec.github.io' },
+    { src: '/images/innova.png', alt: 'Innova Summit', link: 'https://innova-summit.vercel.app' },
+    { src: '/images/seaplan.png', alt: 'Grupo Seaplan Ltda.', link: 'https://www.seaplan.com.br' },
+    { src: '/images/eccomerce.png', alt: 'Eccomerce', link: 'https://ecommerce-stripe-sanity-eta.vercel.app' },
+    { src: '/images/bgf.png', alt: 'BGF', link: 'https://www.brasiliagamefestival.com.br' },
   ];
 
   return (
     <section className="bg-transparent py-20">
-      <h2 className="text-7xl font-bold mb-16 text-black dark:text-white pl-20">Projetos</h2>
-      <div ref={swiperRef} className="swiper-container">
+      <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-16 text-center">Projetos</h2>
+      <div ref={swiperRef} className="swiper-container max-w-screen-xl mx-auto">
         <Swiper
           modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
           spaceBetween={50}
-          slidesPerView={3}
+          slidesPerView={1}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
           navigation
           pagination={{ clickable: true }}
-          autoplay={{ delay: 3000 }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          loop={true}
           effect="coverflow"
           coverflowEffect={{
             rotate: 50,
@@ -66,7 +76,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <SwiperSlide key={index} className="swiper-slide">
               <a href={project.link} target="_blank" rel="noopener noreferrer">
-                <img src={project.src} alt={project.alt} className="w-full h-[30rem] object-cover rounded-xl" />
+                <img src={project.src} alt={project.alt} className="w-full h-[20rem] sm:h-[25rem] lg:h-[30rem] object-cover rounded-xl" />
               </a>
             </SwiperSlide>
           ))}
