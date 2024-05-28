@@ -63,7 +63,7 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section className="bg-transparent overflow-hidden">
+    <section id='skills' className="bg-transparent overflow-hidden">
       <div className="max-w-screen-xl 2xl:max-w-screen-3xl px-8 md:px-12 mx-auto py-12 space-y-12 flex flex-col justify-center">
         <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 text-center sm:text-left">Habilidades</h2>
         <div className="flex flex-wrap justify-center space-x-4 space-y-4">

@@ -34,14 +34,14 @@ const Projects = () => {
 
   const projects = [
     { src: '/images/curriculo.png', alt: 'Curriculo antigo', link: 'https://joaomiottitec.github.io' },
-    { src: '/images/innova.png', alt: 'Innova Summit', link: 'https://innova-summit.vercel.app' },
-    { src: '/images/seaplan.png', alt: 'Grupo Seaplan Ltda.', link: 'https://www.seaplan.com.br' },
     { src: '/images/eccomerce.png', alt: 'Eccomerce', link: 'https://ecommerce-stripe-sanity-eta.vercel.app' },
+    { src: '/images/seaplan.png', alt: 'Grupo Seaplan Ltda.', link: 'https://www.seaplan.com.br' },
     { src: '/images/bgf.png', alt: 'BGF', link: 'https://www.brasiliagamefestival.com.br' },
+    { src: '/images/innova.png', alt: 'Innova Summit', link: 'https://innova-summit.vercel.app' },
   ];
 
   return (
-    <section className="bg-transparent py-20">
+    <section id='projects'  className="bg-transparent py-20">
       <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-16 text-center">Projetos</h2>
       <div ref={swiperRef} className="swiper-container max-w-screen-xl mx-auto">
         <Swiper

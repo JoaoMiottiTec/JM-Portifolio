@@ -11,7 +11,7 @@ const Hero = ({ theme }) => {
   }, []);
 
   return (
-    <section ref={heroRef} className={`relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 bg-cover bg-center hero-text bg-dots ${theme}`}>
+    <section id='hero' ref={heroRef} className={`relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 bg-cover bg-center hero-text bg-dots ${theme}`}>
       <div className="meteor-container absolute inset-0 z-0">
         <div className="meteor meteor-1"></div>
         <div className="meteor meteor-2"></div>
