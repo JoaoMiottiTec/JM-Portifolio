@@ -3,7 +3,11 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import Typewriter from 'typewriter-effect';
 
-const Hero = ({ theme }) => {
+interface HeroProps {
+  theme: string;
+}
+
+const Hero: React.FC<HeroProps> = ({ theme }) => {
   const heroRef = useRef(null);
 
   useEffect(() => {

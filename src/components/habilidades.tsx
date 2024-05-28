@@ -71,7 +71,9 @@ const SkillsSection = () => {
             <a
               href={card.link}
               key={index}
-              ref={(el) => (cardsRef.current[index] = el!)}
+              ref={(el) => {
+                if (el) cardsRef.current[index] = el;
+              }}
               className="card w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2 transform hover:scale-110 transition-transform duration-500"
               target="_blank"
               rel="noopener noreferrer"

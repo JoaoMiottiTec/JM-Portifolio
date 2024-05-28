@@ -6,35 +6,40 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { gsap } from 'gsap';
 import logo from '../../public/images/logo.png';
 
-const Header = () => {
-  const [theme, setTheme] = useState('dark');
+interface HeaderProps {
+  theme: string;
+  setTheme: (theme: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ theme, setTheme }) => {
   const [navMenuVisible, setNavMenuVisible] = useState(false);
   const [socialMenuVisible, setSocialMenuVisible] = useState(false);
   const [themeMenuVisible, setThemeMenuVisible] = useState(false);
-  const navMenuTimeoutRef = useRef(null);
-  const socialMenuTimeoutRef = useRef(null);
-  const themeMenuTimeoutRef = useRef(null);
+  const navMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const socialMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const themeMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const headerRef = useRef(null);
 
   useEffect(() => {
-    document.documentElement.classList.toggle('light', theme === 'light');
-    document.body.classList.toggle('light', theme === 'light');
     gsap.fromTo(headerRef.current, { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 1.5, ease: 'power3.out' });
-  }, [theme]);
+  }, []);
 
-  const toggleTheme = (newTheme) => {
+  const toggleTheme = (newTheme: string) => {
     setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
     document.documentElement.classList.toggle('light', newTheme === 'light');
     document.body.classList.toggle('light', newTheme === 'light');
   };
 
-  const showMenu = (setVisible, timeoutRef) => {
-    clearTimeout(timeoutRef.current);
+  const showMenu = (setVisible: React.Dispatch<React.SetStateAction<boolean>>, timeoutRef: React.MutableRefObject<ReturnType<typeof setTimeout> | null>) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
     setVisible(true);
   };
 
-  const hideMenu = (setVisible, timeoutRef) => {
+  const hideMenu = (setVisible: React.Dispatch<React.SetStateAction<boolean>>, timeoutRef: React.MutableRefObject<ReturnType<typeof setTimeout> | null>) => {
     timeoutRef.current = setTimeout(() => {
       setVisible(false);
     }, 300);
