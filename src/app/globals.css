@@ -24,7 +24,8 @@ body {
 
 .light body {
   @apply bg-white text-black;
-  @apply font-caviari;
+  font-family: 'KodeMono', sans-serif;
+
 }
 
 .experience-item h3,
